@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shoper – Early Access (Nigeria)</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- Satoshi + Clash Display -->
+  <link rel="stylesheet"
+    href="https://api.fontshare.com/v2/css?f[]=satoshi@300,400,500,700,900&f[]=clash-display@700&display=swap" />
+
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Satoshi', 'system-ui', 'sans-serif'],
+            display: ['Clash Display', 'sans-serif'],
+          },
+          colors: { primary: '#6366f1' }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    h1, h2, h3 { font-family: 'Clash Display', sans-serif; }
+
+    /* Moving gradient background */
+    .animated-bg {
+      position: fixed;
+      inset: 0;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 30%, #f093fb 60%, #f5576c 100%);
+      background-size: 400% 400%;
+      animation: gradientShift 20s ease infinite;
+      z-index: -2;
+    }
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    select {
+      -webkit-appearance: none;
+      appearance: none;
+      background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
+      background-repeat: no-repeat;
+      background-position: right 1rem center;
+      background-size: 12px;
+    }
+  </style>
+</head>
+
+<body class="min-h-screen relative bg-white dark:bg-black">
+
+  <!-- Moving background -->
+  <div class="animated-bg"></div>
+  <div class="fixed inset-0 bg-black/40 dark:bg-black/70 z-[-1] pointer-events-none"></div>
+
+  <!-- Dark Mode Toggle -->
+  <button id="themeToggle"
+    class="fixed top-6 right-6 z-50 p-3 rounded-full bg-white/90 dark:bg-gray-800/90 backdrop-blur border border-gray-300 dark:border-gray-600 transition hover:scale-110">
+    <svg class="w-6 h-6 hidden dark:block text-yellow-300" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"/>
+    </svg>
+    <svg class="w-6 h-6 block dark:hidden text-yellow-500" fill="currentColor" viewBox="0 0 20 20">
+      <path d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zm-3.05-.707a1 1 0 01-1.414 0l-.707.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 010-1.414zM5.707 3.293a1 1 0 010 1.414L4.586 5.828a1 1 0 11-1.414-1.414l1.121-1.121a1 1 0 011.414 0z"/>
+    </svg>
+  </button>
+
+  <!-- Main Content -->
+  <div class="relative z-10 py-20 px-5">
+    <div class="max-w-2xl mx-auto">
+      <div class="backdrop-blur-xl bg-white/90 dark:bg-gray-900/95 rounded-3xl border border-white/30 dark:border-gray-700 p-8 md:p-12 text-center">
+
+        <h1 class="text-4xl md:text-6xl font-bold text-gray-900 dark:text-white leading-tight">
+          Shoper is coming
+        </h1>
+
+        <p class="mt-4 text-lg md:text-xl text-gray-700 dark:text-gray-200 font-medium">
+          Smart inventory automation built for Nigerian Shopify brands
+        </p>
+
+        <!-- Form with submitting indicator -->
+        <form id="waitlistForm" 
+              action="https://submit-form.com/jUSevHYMt?_format=json" 
+              method="POST" 
+              class="mt-10 space-y-6">
+
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+            <input name="name" type="text" required placeholder="Full Name"
+              class="px-6 py-4 rounded-2xl bg-gray-100/70 dark:bg-gray-800/70 border border-gray-300 dark:border-gray-600 focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/30 transition text-base" />
+
+            <input name="email" type="email" required placeholder="Work Email"
+              class="px-6 py-4 rounded-2xl bg-gray-100/70 dark:bg-gray-800/70 border border-gray-300 dark:border-gray-600 focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/30 transition text-base" />
+          </div>
+
+          <div class="space-y-5 text-left">
+            <div>
+              <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Monthly revenue?</label>
+              <select name="revenue" required class="w-full px-6 py-4 rounded-2xl bg-gray-100/70 dark:bg-gray-800/70 border border-gray-300 dark:border-gray-600 focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/30 text-base">
+                <option value="">Select range</option>
+                <option>₦0 – ₦5m</option>
+                <option>₦5m – ₦20m</option>
+                <option>₦20m – ₦50m</option>
+                <option>₦50m – ₦200m</option>
+                <option>₦200m+</option>
+              </select>
+            </div>
+
+            <div>
+              <label class="block text-sm font-semibold text-gray-700 dark:text-gray-300 mb-2">Biggest inventory challenge?</label>
+              <select name="pain_point" required class="w-full px-6 py-4 rounded-2xl bg-gray-100/70 dark:bg-gray-800/70 border border-gray-300 dark:border-gray-600 focus:border-primary focus:outline-none focus:ring-4 focus:ring-primary/30 text-base">
+                <option value="">Choose one</option>
+                <option>Overselling & stockouts</option>
+                <option>Manual reordering</option>
+                <option>Multi-channel sync issues</option>
+                <option>No real-time profit tracking</option>
+                <option>Supplier & logistics delays</option>
+              </select>
+            </div>
+          </div>
+
+          <button type="submit" id="submitBtn"
+            class="w-full mt-8 bg-gradient-to-r from-primary to-indigo-700 text-white font-bold text-lg py-6 rounded-2xl hover:shadow-xl transform hover:-translate-y-1 transition duration-300 flex items-center justify-center gap-3">
+            <span id="btnText">Claim My Lifetime Discounted Access</span>
+            <svg id="spinner" class="hidden w-5 h-5 animate-spin" fill="none" viewBox="0 0 24 24">
+              <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+              <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+            </svg>
+          </button>
+
+          <p class="text-sm text-gray-600 dark:text-gray-300 mt-4">
+            Early access = 50% off forever • Built for Nigeria
+          </p>
+        </form>
+
+        <p id="message" class="mt-8 text-lg font-bold"></p>
+      </div>
+
+      <p class="text-center mt-10 text-gray-700 dark:text-gray-300">
+        Already <span class="font-bold text-primary">1,200+</span> Nigerian founders joined
+      </p>
+    </div>
+  </div>
+
+  <!-- Dark Mode + Smooth Submit Indicator -->
+  <script>
+    // Dark mode toggle
+    const toggle = document.getElementById('themeToggle');
+    const html = document.documentElement;
+    if (localStorage.theme === 'dark' || (!localStorage.theme && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      html.classList.add('dark');
+    }
+    toggle.addEventListener('click', () => {
+      html.classList.toggle('dark');
+      localStorage.theme = html.classList.contains('dark') ? 'dark' : 'light';
+    });
+
+    // Form submission with "Submitting..." + spinner
+    const form = document.getElementById('waitlistForm');
+    const btnText = document.getElementById('btnText');
+    const spinner = document.getElementById('spinner');
+    const message = document.getElementById('message');
+    const submitBtn = document.getElementById('submitBtn');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      submitBtn.disabled = true;
+      btnText.textContent = 'Submitting...';
+      spinner.classList.remove('hidden');
+      message.textContent = '';
+
+      try {
+        const res = await fetch(form.action, {
+          method: 'POST',
+          body: new FormData(form),
+          headers: { 'Accept': 'application/json' }
+        });
+
+        if (res.ok) {
+          message.innerHTML = 'You’re in! Check your email';
+          message.className = 'mt-8 text-lg font-bold text-green-600 dark:text-green-400';
+          form.reset();
+        } else throw new Error();
+      } catch {
+        message.innerHTML = 'Please try again';
+        message.className = 'mt-8 text-lg font-bold text-red-600 dark:text-red-400';
+      } finally {
+        submitBtn.disabled = false;
+        btnText.textContent = 'Claim My Lifetime Discounted Access';
+        spinner.classList.add('hidden');
+      }
+    });
+  </script>
+</body>
+</html>
